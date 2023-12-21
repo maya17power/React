@@ -1,4 +1,4 @@
-//console.log('app running es6 arrow functions 2');
+// console.log('app running es6 arrow functions 2');
 // arguments object - NO LONGER BOUND WITH ARROW FUNCTION
 //ES5 function scaffold
 // const add = function (a,b){
@@ -65,11 +65,19 @@
 
 
 //challenge area:
+const multiplier = {
+    numbers: [1,2,3],
+    multiplyBy: (n) => {
+        return multiplier.multiply(n);
+    },
+    multiply(n){
+    //multiplier.numbers.map((i) => i * n)
+    return this.numbers.map((i)=> i * n);
+    }
+}
 
-
-
-
-
+console.log('new array ' + multiplier.multiplyBy(2));
+console.log('original array ' + multiplier.numbers);
 
 
 
