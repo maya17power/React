@@ -1,11 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
-console.log("App component running");
-
 const title = {
-  title: 'My Main Title',
-  subtitle: 'My Sub Title',
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
   list: [
     'list Item 1',
     'list Item 2'
@@ -19,39 +17,39 @@ const title = {
       {title.subtitle && <p>{title.subtitle}</p>}
       <p>{title.list.length > 0 ? 'Options Available' : 'No Available Options'}</p>
       <ol>
-        
+        <li>Item One</li>
+        <li>Item Two</li>
       </ol>
     </div>
   );
 }
 
-const user = {
-  name: 'Gee',
-  age: '18',
-  location: "Los Angeles"
+let count = 0;
+const add1 = () => {
+  console.log('add 1');
 };
 
-// const userName = "Jordan";
-// const userAge = "27";
-// const userLocation = "SF";
-
-function getLocation(location){
-  if(location){
-    return <p>Location: {location}</p>;
-  }
+const minus1 = () => {
+  console.log('minus 1');
 }
 
- function TemplateTwo(){
-  return(
+const reset = () => {
+  console.log('Reset');
+}
+
+function TemplateTwo() {
+  return (
     <div>
-    {/*use ternary operator to select ONE or OTHER*/}
-      <h1>{user.name ? user.name : "Anonymous"}</h1>
-      {/*use AND operator to select ONE or NOTHING*/}
-      {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-      {getLocation(user.location)}
+      <h1>Count: {count}</h1>
+      <button onClick={add1}>+1</button>
+      <button onClick={minus1}>-1</button>
+      <button onClick={reset}>Reset</button>
     </div>
   );
 }
 
+
 //Render Default
-export default App;
+export default TemplateTwo;
+
+
