@@ -156,10 +156,10 @@ function getBook(id) {
 //newList
 
 const newList = {...list.list}
-newList
+//newList
 //#Destructuring
 
-const book = getBook(2);
+const book = getBook(3);
 //console.log(book);
 //const title = book.title;
 //const author = book.author;
@@ -217,20 +217,29 @@ const pagesRange = pages > 1000 ? 'over a Thousand' : 'under a Thousand';
 //console.log('jonas' && 'some string');
 
 //#OR operator '||' short circuit
-console.log(true || 'some text');
-console.log(false || 'some text');
+//console.log(true || 'some text');
+//console.log(false || 'some text');
 
-console.log(book.translations.spanish);
+//console.log(book.translations.spanish);
 const spanishTranslation = book.translations.spanish || 'not translated'
-spanishTranslation
+//spanishTranslation
 
-console.log(book.reviews.librarything.reviewsCount);
+//console.log(book.reviews.librarything.reviewsCount);
 
-//#Coalition operator '??' short circuit
+//# Nullish coalescing operator '??' short circuit
 //# will return false if its 'null' or 'undefined'
-const count = book.reviews.librarything.reviewsCount ?? 'no data';
-count;
+//const count = book.reviews.librarything.reviewsCount ?? 'no data';
+//count;
 
+//#Optional chaining new to ES6
+//# utilize '?' to see if object key exists by placing a '?' after key in question
+//# utilize Nullish coalescing operator '??' to see if null or undefined exist
+//# if it does exist the place a value of '0'.
+// function getTotalReviewCount(book){
+//   const goodReads = book.reviews.goodreads?.reviewsCount ?? 0;
+//   const libraryThings = book.reviews.librarything?.reviewsCount ?? 0;
+//   return goodReads + libraryThings;
+// }
+// console.log(getTotalReviewCount(book));
 
-
-
+//# MAP, FILTER, REDUCE
