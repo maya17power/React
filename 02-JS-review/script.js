@@ -152,24 +152,24 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-// const [...newList] = list.list;
-// newList
+//const [...newList] = list.list;
+//newList
 
 const newList = {...list.list}
 newList
-//Destructuring
+//#Destructuring
 
-const book = getBook(1);
+const book = getBook(2);
 //console.log(book);
-// const title = book.title;
-// const author = book.author;
+//const title = book.title;
+//const author = book.author;
 
 const {title, author, pages, publicationDate, genres, hasMovieAdaptation} = book;
 
 //console.log("cl " + author, title, genres);
 
-// const primaryGenres = genres[0];
-// const secondaryGenres = genres[1];
+//const primaryGenres = genres[0];
+//const secondaryGenres = genres[1];
 
 const [primaryGenres,secondaryGenres,...otherGenres] = genres;
 //console.log(primaryGenres, secondaryGenres, otherGenres);
@@ -177,11 +177,60 @@ const [primaryGenres,secondaryGenres,...otherGenres] = genres;
 const newGenres = ['epic fantasy', ...genres];
 //console.log(newGenres)
 
-//... spreads object values to new object "updatedBook".
-//over write existing values by adding key and new value. example "pages: 100".
+//#... spreads object values to new object "updatedBook".
+//#over write existing values by adding key and new value. example "pages: 100".
 const updatedBook = { ...book, moviePlicationDate: '2001-12-19', pages: 100};
 //updatedBook
+book
 
-//Template litterals by using back ticks ` ` and placing javascript inside ${ } block.
-const summary = `${title}, a ${pages} pages long book, was written by ${author} and published in ${publicationDate.split('-')[0]}`;
-summary;
+
+//#ES5 Longer function Decleration:
+// function getYearD(str){
+//   return str.split("-")[0];
+// }
+//console.log(getYearD(publicationDate));
+
+
+//#Arrow functions Expression:
+const getYearX = (str)=> str.split('-')[0];
+//console.log(getYearX(publicationDate));
+
+
+
+//#Template litterals by using back ticks ` ` and placing javascript inside ${ } block.
+const summary = `${title}, a ${pages} pages long book, was written by ${author} and published in ${getYearX(publicationDate)}. The book has ${hasMovieAdaptation ? '':'not'} been adapted as a movie.`;
+//summary;
+
+//#turniry statement
+//pages
+const pagesRange = pages > 1000 ? 'over a Thousand' : 'under a Thousand';
+//console.log(`The book "${title}" has ${pagesRange} pages.`);
+
+//#AND operator '&&' short circuit
+//console.log(true && "some string");
+//#Below is short circuiting, when returns first value without going to the next
+//console.log(false && "some string");
+//console.log(hasMovieAdaptation && 'This book has a movie');
+//#falsy values are: 0, '', null, undefined
+//console.log(0 && 'some string');
+//#truthy values are: 
+//console.log('jonas' && 'some string');
+
+//#OR operator '||' short circuit
+console.log(true || 'some text');
+console.log(false || 'some text');
+
+console.log(book.translations.spanish);
+const spanishTranslation = book.translations.spanish || 'not translated'
+spanishTranslation
+
+console.log(book.reviews.librarything.reviewsCount);
+
+//#Coalition operator '??' short circuit
+//# will return false if its 'null' or 'undefined'
+const count = book.reviews.librarything.reviewsCount ?? 'no data';
+count;
+
+
+
+
