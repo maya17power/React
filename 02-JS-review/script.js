@@ -181,3 +181,7 @@ const newGenres = ['epic fantasy', ...genres];
 //over write existing values by adding key and new value. example "pages: 100".
 const updatedBook = { ...book, moviePlicationDate: '2001-12-19', pages: 100};
 //updatedBook
+
+//Template litterals by using back ticks ` ` and placing javascript inside ${ } block.
+const summary = `${title}, a ${pages} pages long book, was written by ${author} and published in ${publicationDate.split('-')[0]}`;
+summary;
