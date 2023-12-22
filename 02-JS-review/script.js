@@ -155,33 +155,33 @@ function getBook(id) {
 //const [...newList] = list.list;
 //newList
 
-const newList = {...list.list}
+//const newList = {...list.list}
 //newList
 //#Destructuring
 
-const book = getBook(3);
+//const book = getBook(3);
 //console.log(book);
 //const title = book.title;
 //const author = book.author;
 
-const {title, author, pages, publicationDate, genres, hasMovieAdaptation} = book;
+//const {title, author, pages, publicationDate, genres, hasMovieAdaptation} = book;
 
 //console.log("cl " + author, title, genres);
 
 //const primaryGenres = genres[0];
 //const secondaryGenres = genres[1];
 
-const [primaryGenres,secondaryGenres,...otherGenres] = genres;
+//const [primaryGenres,secondaryGenres,...otherGenres] = genres;
 //console.log(primaryGenres, secondaryGenres, otherGenres);
 
-const newGenres = ['epic fantasy', ...genres];
+//const newGenres = ['epic fantasy', ...genres];
 //console.log(newGenres)
 
 //#... spreads object values to new object "updatedBook".
 //#over write existing values by adding key and new value. example "pages: 100".
-const updatedBook = { ...book, moviePlicationDate: '2001-12-19', pages: 100};
+//const updatedBook = { ...book, moviePlicationDate: '2001-12-19', pages: 100};
 //updatedBook
-book
+//book
 
 
 //#ES5 Longer function Decleration:
@@ -192,18 +192,18 @@ book
 
 
 //#Arrow functions Expression:
-const getYearX = (str)=> str.split('-')[0];
+//const getYearX = (str)=> str.split('-')[0];
 //console.log(getYearX(publicationDate));
 
 
 
 //#Template litterals by using back ticks ` ` and placing javascript inside ${ } block.
-const summary = `${title}, a ${pages} pages long book, was written by ${author} and published in ${getYearX(publicationDate)}. The book has ${hasMovieAdaptation ? '':'not'} been adapted as a movie.`;
+//const summary = `${title}, a ${pages} pages long book, was written by ${author} and published in ${getYearX(publicationDate)}. The book has ${hasMovieAdaptation ? '':'not'} been adapted as a movie.`;
 //summary;
 
 //#turniry statement
 //pages
-const pagesRange = pages > 1000 ? 'over a Thousand' : 'under a Thousand';
+//const pagesRange = pages > 1000 ? 'over a Thousand' : 'under a Thousand';
 //console.log(`The book "${title}" has ${pagesRange} pages.`);
 
 //#AND operator '&&' short circuit
@@ -221,7 +221,7 @@ const pagesRange = pages > 1000 ? 'over a Thousand' : 'under a Thousand';
 //console.log(false || 'some text');
 
 //console.log(book.translations.spanish);
-const spanishTranslation = book.translations.spanish || 'not translated'
+//const spanishTranslation = book.translations.spanish || 'not translated'
 //spanishTranslation
 
 //console.log(book.reviews.librarything.reviewsCount);
@@ -241,5 +241,38 @@ const spanishTranslation = book.translations.spanish || 'not translated'
 //   return goodReads + libraryThings;
 // }
 // console.log(getTotalReviewCount(book));
+//////////////////////////////////////////////////////////////////////
+//# ARRAY MAP METHOD -> MAP, FILTER, REDUCE
+//# returns new array
+//////////////////////////////////////////////////////////////////////
+//# MAP method
+//# MAP returns new array of original array with operation applied to each element of original array
+//const x = [1,2,3,4,5].map(el=> el * 2);
+//console.log(x);
+// const books = getBooks();
+// const bookTitles = books.map(b=> b.title);
+// console.log(bookTitles);
+//#Declaration
+// const essentialData = books.map(b=>{
+//   return{
+//     author: b.author,
+//     title: b.title,
+//   };
+// });
 
-//# MAP, FILTER, REDUCE
+//# slimmed version
+// const essentialData = books.map((b)=>({
+//   author: b.author,
+//   title: b.title,
+//   reviewsCount: getTotalReviewCount(b),
+// }));
+// essentialData
+
+//////////////////////////////////////////////////
+//# Filter method
+//# Returns a condition if 'true' or 'false'
+//# books.filter will return books, if pages are greater than 500.
+const books = getBooks();
+const longBooks = books.filter((b)=> b.pages > 500);
+longBooks
+
