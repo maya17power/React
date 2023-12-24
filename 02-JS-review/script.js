@@ -12,7 +12,7 @@ const data = [
       "novels",
       "literature",
     ],
-    hasMovieAdaptation: true,
+    hasMovieAdaptation: false,
     pages: 1216,
     translations: {
       spanish: "El señor de los anillos",
@@ -269,10 +269,50 @@ function getBook(id) {
 // essentialData
 
 //////////////////////////////////////////////////
-//# Filter method
+//# Filter method, chain filter
 //# Returns a condition if 'true' or 'false'
-//# books.filter will return books, if pages are greater than 500.
+//# books.filter will return new books array, if pages are greater than 500.
 const books = getBooks();
-const longBooks = books.filter((b)=> b.pages > 500);
-longBooks
+//const longBooks = books.filter((b)=> b.pages > 500 && b.hasMovieAdaptation);
+//longBooks
+// const longBooks = books
+//   .filter((b)=> b.pages > 500)
+//   .filter((b)=> b.hasMovieAdaptation);
 
+//# Filter only Adventure Books, using method above.
+// const adventureBooks = books
+// .filter((b)=> b.genres.includes("adventure"))
+// .map((b)=> b.title);
+// adventureBooks
+/////////////////////////////////////////////////////////
+
+//# Reduce method practise examples
+//# reduce mentod is the most powerfull of all array methods
+//# most important it performes mathimatical computations like adding two numbers together.
+//# stash is the variable that will sum all the book tages calculation.
+//# book is the object we are reducing.
+//# function calculates the book.pages plush the sum variable value
+//# function 0 means its sum initial value/ starting point value.
+// const pagesAllBooks = books.reduce((sum, book)=> sum + book.pages, 0);
+// pagesAllBooks
+//////////////////////////////////////////////
+
+
+//# Sort array method Mutates/Changes the Original Array
+const sortMe = [4,3,56,6,7,8];
+//# sort in an accending direction
+const a_sort = sortMe.sort((a,b)=> a-b);
+a_sort
+
+//# sort in an decending direction
+const d_sort = sortMe.sort((a,b)=> b -a);
+d_sort
+
+//# sort a new Array by chaining a SLICE method to the existing array.
+const a_myNewSort = sortMe.slice().sort((a,b)=> a - b);
+a_myNewSort
+sortMe
+
+//sort object 'book' pages.
+const d_bookPageSort = books.slice().sort((a,b)=> a.pages - b.pages);
+d_bookPageSort

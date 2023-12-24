@@ -1,55 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+//useState required when updating element inner values
+//useEffect required when to load default values into element on load.
+import { useEffect, useState} from "react";
 
-const title = {
-  title: 'Indecision App',
-  subtitle: 'Put your life in the hands of a computer',
-  list: [
-    'list Item 1',
-    'list Item 2'
-  ]
-}
+//App component contains main function which generates html elemets programatically
+export default function App() {
+  let c = 0;
+  let currentCount = useState(c);
 
- function App() {
+  function add1(){
+    c++;
+    console.log(c);
+  };
+
+  async function counter() {
+
+    // currentCount();
+
+
+  }
+
+  //assign function into useEffect method with second argument as empty array.
+  useEffect(() => {
+    counter();
+  }, []);
+
   return (
     <div>
-      <h1>{title.title}</h1>
-      {title.subtitle && <p>{title.subtitle}</p>}
-      <p>{title.list.length > 0 ? 'Options Available' : 'No Available Options'}</p>
-      <ol>
-        <li>Item One</li>
-        <li>Item Two</li>
-      </ol>
+        <h1>Count: {currentCount}</h1>
+        <button onClick={add1}>+1</button>
+        {/* <button onClick={minus1}>-1</button>
+        <button onClick={reset}>Reset</button> */}
     </div>
   );
+
+  //Message component handles messages to end user.
+  //props perameter is collected to utilize useState within function.
+  function Message(props) {
+    return (
+      <p>
+        {/* You have read <strong>{props.count}</strong> pieces of advice. */}
+      </p>
+    );
+  }
 }
-
-let count = 0;
-const add1 = () => {
-  console.log('add 1');
-};
-
-const minus1 = () => {
-  console.log('minus 1');
-}
-
-const reset = () => {
-  console.log('Reset');
-}
-
-function TemplateTwo() {
-  return (
-    <div>
-      <h1>Count: {count}</h1>
-      <button onClick={add1}>+1</button>
-      <button onClick={minus1}>-1</button>
-      <button onClick={reset}>Reset</button>
-    </div>
-  );
-}
-
-
-//Render Default
-export default TemplateTwo;
-
-
