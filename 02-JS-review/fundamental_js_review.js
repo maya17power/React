@@ -177,9 +177,9 @@ function getBook(id) {
 //const newGenres = ['epic fantasy', ...genres];
 //console.log(newGenres)
 
-//#... spreads object values to new object "updatedBook".
+//#... SPREAD operator adds new object to new object array variable"updatedBook".
 //#over write existing values by adding key and new value. example "pages: 100".
-//const updatedBook = { ...book, moviePlicationDate: '2001-12-19', pages: 100};
+//const updatedBook = { ...book, moviePublicationDate: '2001-12-19', pages: 100};
 //updatedBook
 //book
 
@@ -295,24 +295,45 @@ const books = getBooks();
 //# function 0 means its sum initial value/ starting point value.
 // const pagesAllBooks = books.reduce((sum, book)=> sum + book.pages, 0);
 // pagesAllBooks
-//////////////////////////////////////////////
-
+////////////////////////////////////////////////////////
 
 //# Sort array method Mutates/Changes the Original Array
-const sortMe = [4,3,56,6,7,8];
+//const sortMe = [4,3,56,6,7,8];
 //# sort in an accending direction
-const a_sort = sortMe.sort((a,b)=> a-b);
-a_sort
+//const a_sort = sortMe.sort((a,b)=> a-b);
+//a_sort
 
 //# sort in an decending direction
-const d_sort = sortMe.sort((a,b)=> b -a);
-d_sort
+//const d_sort = sortMe.sort((a,b)=> b -a);
+//d_sort
 
 //# sort a new Array by chaining a SLICE method to the existing array.
-const a_myNewSort = sortMe.slice().sort((a,b)=> a - b);
-a_myNewSort
-sortMe
+//const a_myNewSort = sortMe.slice().sort((a,b)=> a - b);
+//a_myNewSort
+//sortMe
 
 //sort object 'book' pages.
-const d_bookPageSort = books.slice().sort((a,b)=> a.pages - b.pages);
-d_bookPageSort
+//const d_bookPageSort = books.slice().sort((a,b)=> a.pages - b.pages);
+//d_bookPageSort
+
+//# 1) add book object to array
+const newBook = {
+  id:6,
+  title: "Harry Potter adn the chamber of secrets",
+  author: "J. K. Rowling",
+};
+//# Merge new object array to existing object array into new object array variable.
+//# use SPREAD operator to add new object array to the end of the list.
+const booksAfterAdd = [...books, newBook];
+//booksAfterAdd
+
+//# 2) delete book object from array
+//# use filter method to remove object from array
+const booksAfterDelete = booksAfterAdd.filter((b)=> b.id !== 3);
+//booksAfterDelete
+
+//# 3 update a book object in the array
+//# use map method to update book object from array
+//# here it SPREADS the book object and add property 'pages:' with value of '1'.
+const booksAfterUpdate = booksAfterDelete.map((b)=> b.id === 1 ? {...b, pages: 1210} : b);
+booksAfterUpdate
