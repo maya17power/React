@@ -1,45 +1,47 @@
-//useState required when updating element inner values
-//useEffect required when to load default values into element on load.
-import { useEffect, useState} from "react";
+    //useState required when updating element inner values
+    //useEffect required when to load default values into element on load.
+    import { useEffect, useState} from "react";
+    import React from "react";
+    import ReactDOM from "react";
+    import appRoot from "react";
 
-//App component contains main function which generates html elemets programatically
-export default function App() {
-  let c = 0;
-  let currentCount = useState(c);
+    //App component contains main function which generates html elemets programatically
+    export default function App() {
+    let [currentCount, updateCount]= useState("");
+    let count = 0;
 
-  function add1(){
-    c++;
-    console.log(c);
-  };
+    //assign function into useEffect method with second argument as empty array.
+    useEffect(() => {
+      getData();
+    }, []);
 
-  async function counter() {
+    async function getData(){
+      //for api fetch
+      
+    }
 
-    // currentCount();
+    function add(){
+      count++
+      console.log('add button clicked. Current Count at: ' + count);
+      
+    };
 
+    function remove(){
+      //console.log(count-1);
+      count = count !== 0 ? count-1 : 0;
+      console.log('remove button clicked. Current Count at: ' + count);
+    };
 
-  }
-
-  //assign function into useEffect method with second argument as empty array.
-  useEffect(() => {
-    counter();
-  }, []);
-
-  return (
-    <div>
-        <h1>Count: {currentCount}</h1>
-        <button onClick={add1}>+1</button>
-        {/* <button onClick={minus1}>-1</button>
-        <button onClick={reset}>Reset</button> */}
-    </div>
-  );
-
-  //Message component handles messages to end user.
-  //props perameter is collected to utilize useState within function.
-  function Message(props) {
     return (
-      <p>
-        {/* You have read <strong>{props.count}</strong> pieces of advice. */}
-      </p>
+      <div>
+        <h1>Counter: {currentCount}</h1>
+        <h2>
+          <button onClick={add}>Add</button>
+        </h2>
+        <h2>
+          <button onClick={remove}>Remove</button>
+        </h2>
+      </div>
     );
-  }
-}
+
+};
